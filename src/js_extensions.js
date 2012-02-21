@@ -97,8 +97,14 @@ String.prototype.ljust = function(length_of_string) {
  */
 String.prototype.center = function(length_of_string) { 
 	if (length_of_string < this.length) return this.toString();
-	if (length_of_string - this.length % 2 == 1) return 
-	return '   ' + this + '   ';
+	if ((length_of_string - this.length) % 2 == 1) {
+		return this.rjust(this.length + ((length_of_string - this.length - 1) / 2))
+		           .ljust(length_of_string);
+	}
+	else {
+		return this.rjust(this.length + ((length_of_string - this.length) / 2)).ljust(length_of_string);
+	}
+	return this;
 };
 
 /**
