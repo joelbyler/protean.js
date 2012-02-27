@@ -63,13 +63,19 @@ String.prototype.casecmp = function(string_to_compare) {
  * "hello".rjust(20)           #=> "               hello"
  * "hello".rjust(20, '1234')   #=> "123412341234123hello"
  */
-String.prototype.rjust = function(length_of_string) { 
+String.prototype.rjust = function(length_of_string, chars_to_fill) { 
 	if (length_of_string < this.length) return this.toString();
-	var returnValue = this;
-	while (returnValue.length < length_of_string) {
-		returnValue = " " + returnValue;
+	var fillValue = "";
+	while (this.length + fillValue.length < length_of_string) {
+		if(chars_to_fill){
+			if (fillValue.length + chars_to_fill.length + this.length > length_of_string) {
+				fillValue += chars_to_fill.substring(0,  length_of_string - (fillValue.length + this.length));
+			}
+			else fillValue += chars_to_fill;
+		}
+		else fillValue += " ";
 	}
-	return returnValue;
+	return fillValue + this;
 };
 
 /**
@@ -78,13 +84,19 @@ String.prototype.rjust = function(length_of_string) {
  * "hello".ljust(20)           #=> "hello               "
  * "hello".ljust(20, '1234')   #=> "hello123412341234123"
  */
-String.prototype.ljust = function(length_of_string) { 
+String.prototype.ljust = function(length_of_string, chars_to_fill) { 
 	if (length_of_string < this.length) return this.toString();
-	var returnValue = this;
-	while (returnValue.length < length_of_string) {
-		returnValue = returnValue + " ";
+	var fillValue = "";
+	while (this.length + fillValue.length < length_of_string) {
+		if(chars_to_fill){
+			if (fillValue.length + chars_to_fill.length + this.length > length_of_string) {
+				fillValue += chars_to_fill.substring(0,  length_of_string - (fillValue.length + this.length));
+			}
+			else fillValue += chars_to_fill;
+		}
+		else fillValue += " ";
 	}
-	return returnValue;
+	return this + fillValue;
 };
 
 /**

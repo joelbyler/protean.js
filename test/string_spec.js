@@ -30,21 +30,37 @@ describe('String Extension', function() {
     var comparison = 'smallcase'.casecmp('SmALlCaSe');
     comparison.should.equal(0);
   });
-  it('should be able to center the value \'foo\' with spaces to make it 9 wide (3 spaces on each side)', function() {
-    var message = 'foo'.center(9);
-    message.should.equal('   foo   ');
-  });
-  it('should be able to center the value \'foo\' with spaces to make it 10 wide (3 spaces on each side)', function() {
-    var message = 'foo'.center(10);
-    message.should.equal('   foo    ');
-  });
   it('should be able to right justify the string \'foo\' to 10 characters long', function() {
     var message = 'foo'.rjust(10);
     message.should.equal('       foo');
   });
+  it('should be able to right justify the string \'foo\' to 21 characters long and fill with 123', function() {
+    var message = 'foo'.rjust(21, '123');
+    message.should.equal('123123123123123123foo');
+  });
+  it('should be able to right justify the string \'foo\' to 20 characters long and fill with 123', function() {
+    var message = 'foo'.rjust(20, '123');
+    message.should.equal('12312312312312312foo');
+  });
+  it('should be able to right justify the string \'foo\' to 19 characters long and fill with 123', function() {
+    var message = 'foo'.rjust(19, '123');
+    message.should.equal('1231231231231231foo');
+  });
   it('should be able to left justify the string \'foo\' to 10 characters long', function() {
     var message = 'foo'.ljust(10);
     message.should.equal('foo       ');
+  });
+  it('should be able to left justify the string \'foo\' to 21 characters long and fill with 123', function() {
+    var message = 'foo'.ljust(21, '123');
+    message.should.equal('foo123123123123123123');
+  });
+  it('should be able to left justify the string \'foo\' to 20 characters long and fill with 123', function() {
+    var message = 'foo'.ljust(20, '123');
+    message.should.equal('foo12312312312312312');
+  });
+  it('should be able to left justify the string \'foo\' to 19 characters long and fill with 123', function() {
+    var message = 'foo'.ljust(19, '123');
+    message.should.equal('foo1231231231231231');
   });
   it('should be able to center the value \'foobar\' with spaces to make it 10 wide (2 spaces on each side)', function() {
     var message = 'foobar'.center(10);
