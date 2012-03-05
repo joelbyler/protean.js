@@ -3,15 +3,15 @@ var Person = require(__dirname + '/../src/js_extensions');
 
 describe('String Extension', function() {
   it('should be able to trim a value of \'   text with extra spaces   \'', function() {
-    var message = '   text with extra spaces   '.trim();
+    var message = '   text with extra spaces   '.strip();
     message.should.equal('text with extra spaces');
   });
   it('should be able to right trim a value of \'text with extra spaces on the right   \'', function() {
-    var message = 'text with extra spaces on the right   '.rtrim();
+    var message = 'text with extra spaces on the right   '.rstrip();
     message.should.equal('text with extra spaces on the right');
   });
   it('should be able to trim a value of \'   text with extra spaces on the left\'', function() {
-    var message = '   text with extra spaces on the left'.ltrim();
+    var message = '   text with extra spaces on the left'.lstrip();
     message.should.equal('text with extra spaces on the left');
   });
   it('should be able to chop the last char from string \'12345\'', function() {
@@ -74,4 +74,21 @@ describe('String Extension', function() {
     var message = 'foobar'.center(4);
     message.should.equal('foobar');
   });
+  it('should be able to center the string \'foo\' between chars abc and make it 10 chars wide', function() {
+    var message = 'foo'.center(10, 'abc');
+    message.should.equal('abcfooabca');
+  });
+  it('when chomping the phrase \'hello\' the result will be the same', function() {
+    var message = 'hello'.chomp();
+    message.should.equal('hello');
+  });
+  it('when chomping the phrase \'foo\\rbar\' the result will be \'foo\'', function() {
+    var message = 'foo\rbar'.chomp();
+    message.should.equal('foo');
+  });
+  it('when chomping the phrase \'hello\' with a delimiter of \'llo\' the result will be \'he\'', function() {
+    var message = 'hello'.chomp('llo');
+    message.should.equal('he');
+  });
+ 
 });

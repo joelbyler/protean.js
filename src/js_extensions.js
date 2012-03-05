@@ -1,30 +1,51 @@
 /**
- * Trim leading and trailing spaces from the string
+ * Returns a copy of str with leading and trailing whitespace removed.
+ * @example
+ * "    hello    ".strip   #=> "hello"
+ * "\tgoodbye\r\n".strip   #=> "goodbye"
  */
-String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g,""); };
+String.prototype.strip = function() { return this.replace(/^\s+|\s+$/g,""); };
 
 /**
- * Trim leading spaces from the string
+ * Returns a copy of str with leading whitespace removed. See also String#rstrip and String#strip.
+ * @example
+ * "  hello  ".lstrip   #=> "hello  "
+ * "hello".lstrip       #=> "hello"
  */
-String.prototype.ltrim = function() { return this.replace(/^\s+/,""); };
+String.prototype.lstrip = function() { return this.replace(/^\s+/,""); };
 
 /**
- * Trim trailing spaces from the string
+ * Returns a copy of str with trailing whitespace removed. See also String#lstrip and String#strip.
+ * @example
+ * "  hello  ".rstrip   #=> "  hello"
+ * "hello".rstrip       #=> "hello"
  */
-String.prototype.rtrim = function() { return this.replace(/\s+$/,""); };
+String.prototype.rstrip = function() { return this.replace(/\s+$/,""); };
 
 /**
- * Remove the last character from a string
+ * Returns a new String with the last character removed. If the string ends with \r\n, both characters are removed. Applying chop to an empty string returns an empty string. String#chomp is often a safer alternative, as it leaves the string unchanged if it doesn’t end in a record separator.
+ * @example
+ * "string\r\n".chop   #=> "string"
+ * "string\n\r".chop   #=> "string\n"
+ * "string\n".chop     #=> "string"
+ * "string".chop       #=> "strin"
+ * "x".chop.chop       #=> ""
  */
 String.prototype.chop = function() { return this.length > 0 ? this.substring(0,this.length - 1) : ""; };
 
 /**
- * Capitalize the first character in a string
+ * Returns a copy of str with all lowercase letters replaced with their uppercase counterparts. The operation is locale insensitive—only characters “a” to “z” are affected. Note: case replacement is effective only in ASCII region.
+ * @example
+ * "hEllO".upcase   #=> "HELLO"
  */
 String.prototype.upcase = function() { return this.toUpperCase(); };
 
 /**
- * Capitalize every character in a string
+ * Returns a copy of str with the first character converted to uppercase and the remainder to lowercase. Note: case conversion is effective only in ASCII region.
+ * @example
+ * "hello".capitalize    #=> "Hello"
+ * "HELLO".capitalize    #=> "Hello"
+ * "123ABC".capitalize   #=> "123abc"
  */
 String.prototype.capitalize = function() { 
 	return (this.length > 0 ? this.substring(0,1).toUpperCase() : "" ) +
@@ -33,6 +54,7 @@ String.prototype.capitalize = function() {
 
 /** 
  * Compare to string values (case sensitive)
+ * @param string_to_compare The string to compare against
  * @example
  * "abcdef" <=> "abcde"     #=>  1
  * "abcdef" <=> "abcdef"    #=>  0
@@ -45,6 +67,7 @@ String.prototype.str = function(string_to_compare) {
 
 /**
  * Case-insensitive string comparison
+ * @param string_to_compare The string to compare against
  * @example
  * .casecmp
  * "abcdef".casecmp("abcde")   #=>  1
@@ -58,6 +81,8 @@ String.prototype.casecmp = function(string_to_compare) {
 
 /**
  *  If integer is greater than the length of str, returns a new String of length integer with str right justified and padded with padstr; otherwise, returns str.
+ * @param length_of_string final length of resulting string
+ * @param chars_to_fill (optional) character(s) to use for padding (' ' is default)
  * @example 
  * "hello".rjust(4)            #=> "hello"
  * "hello".rjust(20)           #=> "               hello"
@@ -80,6 +105,9 @@ String.prototype.rjust = function(length_of_string, chars_to_fill) {
 
 /**
  * If integer is greater than the length of str, returns a new String of length integer with str left justified and padded with padstr; otherwise, returns str.
+ * @param length_of_string final length of resulting string
+ * @param chars_to_fill (optional) character(s) to use for padding (' ' is default)
+ * @example 
  * "hello".ljust(4)            #=> "hello"
  * "hello".ljust(20)           #=> "hello               "
  * "hello".ljust(20, '1234')   #=> "hello123412341234123"
@@ -101,26 +129,30 @@ String.prototype.ljust = function(length_of_string, chars_to_fill) {
 
 /**
  * If integer is greater than the length of str, returns a new String of length integer with str centered and padded with padstr; otherwise, returns str.
+ * @param length_of_string final length of resulting string
+ * @param chars_to_fill (optional) character(s) to use for padding (' ' is default)
  * @example
  * .center 
  * "hello".center(4) #=> "hello"
  * "hello".center(20) #=> " hello "
  * "hello".center(20, '123') #=> "1231231hello12312312"
  */
-String.prototype.center = function(length_of_string) { 
+String.prototype.center = function(length_of_string, chars_to_fill) { 
 	if (length_of_string < this.length) return this.toString();
 	if ((length_of_string - this.length) % 2 == 1) {
-		return this.rjust(this.length + ((length_of_string - this.length - 1) / 2))
-		           .ljust(length_of_string);
+		return this.rjust(this.length + ((length_of_string - this.length - 1) / 2), chars_to_fill)
+		           .ljust(length_of_string, chars_to_fill);
 	}
 	else {
-		return this.rjust(this.length + ((length_of_string - this.length) / 2)).ljust(length_of_string);
+		return this.rjust(this.length + ((length_of_string - this.length) / 2), chars_to_fill)
+		           .ljust(length_of_string, chars_to_fill);
 	}
 	return this;
 };
 
 /**
  * Returns a new String with the given record separator removed from the end of str (if present). If $/ has not been changed from the default Ruby record separator, then chomp also removes carriage return characters (that is it will remove \n, \r, and \r\n).
+ * @param delim (optional) delimiter to be used for chopping ('\r' is default)
  * @example
  * .chomp
  * "hello".chomp #=> "hello"
@@ -131,4 +163,11 @@ String.prototype.center = function(length_of_string) {
  * "hello \n there".chomp #=> "hello \n there"
  * "hello".chomp("llo") #=> "he"
  */
+String.prototype.chomp = function(delim) { 
+	if(!delim){
+		delim = '\r';
+	}
+	if(this.indexOf(delim)==-1)return this + '';
+	else return this.substring(0,this.indexOf(delim));
+};
 
