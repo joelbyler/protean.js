@@ -90,5 +90,10 @@ describe('String Extension', function() {
     var message = 'hello'.chomp('llo');
     message.should.equal('he');
   });
+  it('should be able to change the text \'AbCdEfGh\' to lower case', function() {
+    var message = 'AbCdEfGh'.downcase();
+    message.should.equal('abcdefgh');
+  });
+
  
 });

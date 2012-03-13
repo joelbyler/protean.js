@@ -41,6 +41,13 @@ String.prototype.chop = function() { return this.length > 0 ? this.substring(0,t
 String.prototype.upcase = function() { return this.toUpperCase(); };
 
 /**
+ * Returns a copy of str with all uppercase letters replaced with their lowercase counterparts. The operation is locale insensitive—only characters “A” to “Z” are affected. Note: case replacement is effective only in ASCII region.
+ * @example 
+ * "hEllO".downcase   #=> "hello"
+ */
+String.prototype.downcase = function() { return this.toLowerCase(); };
+
+/**
  * Returns a copy of str with the first character converted to uppercase and the remainder to lowercase. Note: case conversion is effective only in ASCII region.
  * @example
  * "hello".capitalize    #=> "Hello"
@@ -171,3 +178,42 @@ String.prototype.chomp = function(delim) {
 	else return this.substring(0,this.indexOf(delim));
 };
 
+/**
+ * Each other_str parameter defines a set of characters to count. The intersection of these sets defines the characters to count in str. Any other_str that starts with a caret (^) is negated. The sequence c1–c2 means all characters between c1 and c2.
+ * @example 
+ * a = "hello world"
+ * a.count "lo"            #=> 5
+ * a.count "lo", "o"       #=> 2
+ * a.count "hello", "^l"   #=> 4
+ * a.count "ej-m"          #=> 4
+ */
+String.prototype.count = function() { 
+	return 0;
+};
+
+/**
+ * Returns the index of the first occurrence of the given substring or pattern (regexp) in str. Returns nil if not found. If the second parameter is present, it specifies the position in the string to begin the search.
+ * @param match_string string to locate
+ * @example 
+ * "hello".index('e')             #=> 1
+ * "hello".index('lo')            #=> 3
+ * "hello".index('a')             #=> nil
+ */
+
+/**
+ * Returns the index of the last occurrence of the given substring or pattern (regexp) in str. Returns nil if not found. If the second parameter is present, it specifies the position in the string to end the search—characters beyond this point will not be considered.
+ * @param match_string string to locate
+ * @example 
+ * "hello".rindex('e')             #=> 1
+ * "hello".rindex('l')             #=> 3
+ * "hello".rindex('a')             #=> null
+ */
+
+/**
+ * Inserts other_str before the character at the given index, modifying str. Negative indices count from the end of the string, and insert after the given character. The intent is insert aString so that it starts at the given index.
+ * "abcd".insert(0, 'X')    #=> "Xabcd"
+ * "abcd".insert(3, 'X')    #=> "abcXd"
+ * "abcd".insert(4, 'X')    #=> "abcdX"
+ * "abcd".insert(-3, 'X')   #=> "abXcd"
+ * "abcd".insert(-1, 'X')   #=> "abcdX"
+ */
