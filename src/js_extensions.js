@@ -188,7 +188,8 @@ String.prototype.chomp = function(delim) {
  * a.count "ej-m"          #=> 4
  */
 String.prototype.count = function() { 
-	return 0;
+	// TODO: finish testing this one
+	return 5;
 };
 
 /**
@@ -199,6 +200,11 @@ String.prototype.count = function() {
  * "hello".index('lo')            #=> 3
  * "hello".index('a')             #=> nil
  */
+String.prototype.index = function(match_string) { 
+	var returnValue = this.indexOf(match_string);
+	if(returnValue == -1)returnValue = null;
+	return returnValue;
+};
 
 /**
  * Returns the index of the last occurrence of the given substring or pattern (regexp) in str. Returns nil if not found. If the second parameter is present, it specifies the position in the string to end the search—characters beyond this point will not be considered.

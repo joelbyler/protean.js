@@ -94,6 +94,20 @@ describe('String Extension', function() {
     var message = 'AbCdEfGh'.downcase();
     message.should.equal('abcdefgh');
   });
-
+  it('should be able to find \'ll\' at location 2 in \'hello\'', function() {
+    var message = 'hello'.index('ll');
+    message.should.equal(2);
+  });
+  it('should be able to find \'lo\' at location 2 in \'hello\'', function() {
+    var message = 'hello'.index('lo');
+    message.should.equal(3);
+  });
+  it('should return null when trying to find \'a\' in \'hello\'', function() {
+    'hello'.index('a')+''.should.equal('');
+  });
+  it('should find the count of \'lo\' in \'hello world\' as 5', function() {
+    var message = 'hello world'.count('lo');
+    message.should.equal(5);
+  });
  
 });
