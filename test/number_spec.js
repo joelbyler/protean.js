@@ -1,5 +1,5 @@
 var should = require('should');
-var Person = require(__dirname + '/../src/protean_number');
+var Number = require(__dirname + '/../src/protean_number');
 
 describe('Integer Extension', function() {
   it('Knows what\'s next', function() {
