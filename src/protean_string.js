@@ -42,7 +42,7 @@ String.prototype.upcase = function() { return this.toUpperCase(); };
 
 /**
  * Returns a copy of str with all uppercase letters replaced with their lowercase counterparts. The operation is locale insensitive—only characters “A” to “Z” are affected. Note: case replacement is effective only in ASCII region.
- * @example 
+ * @example
  * "hEllO".downcase   #=> "hello"
  */
 String.prototype.downcase = function() { return this.toLowerCase(); };
@@ -54,12 +54,12 @@ String.prototype.downcase = function() { return this.toLowerCase(); };
  * "HELLO".capitalize    #=> "Hello"
  * "123ABC".capitalize   #=> "123abc"
  */
-String.prototype.capitalize = function() { 
+String.prototype.capitalize = function() {
 	return (this.length > 0 ? this.substring(0,1).toUpperCase() : "" ) +
            (this.length > 1 ? this.substring(1,this.length) : "");
 };
 
-/** 
+/**
  * Compare to string values (case sensitive)
  * @param string_to_compare The string to compare against
  * @example
@@ -68,9 +68,9 @@ String.prototype.capitalize = function() {
  * "abcdef" <=> "abcdefg"   #=> -1
  * "abcdef" <=> "ABCDEF"    #=>  1
  */
-String.prototype.str = function(string_to_compare) { 
+String.prototype.str = function(string_to_compare) {
 	return this.localeCompare(string_to_compare);
-}; 
+};
 
 /**
  * Case-insensitive string comparison
@@ -82,7 +82,7 @@ String.prototype.str = function(string_to_compare) {
  * "abcdef".casecmp("abcdefg") #=> -1
  * "abcdef".casecmp("ABCDEF")  #=>  0
  */
-String.prototype.casecmp = function(string_to_compare) { 
+String.prototype.casecmp = function(string_to_compare) {
 	return this.upcase().str(string_to_compare.upcase());
 };
 
@@ -90,12 +90,12 @@ String.prototype.casecmp = function(string_to_compare) {
  *  If integer is greater than the length of str, returns a new String of length integer with str right justified and padded with padstr; otherwise, returns str.
  * @param length_of_string final length of resulting string
  * @param chars_to_fill (optional) character(s) to use for padding (' ' is default)
- * @example 
+ * @example
  * "hello".rjust(4)            #=> "hello"
  * "hello".rjust(20)           #=> "               hello"
  * "hello".rjust(20, '1234')   #=> "123412341234123hello"
  */
-String.prototype.rjust = function(length_of_string, chars_to_fill) { 
+String.prototype.rjust = function(length_of_string, chars_to_fill) {
 	if (length_of_string < this.length) return this.toString();
 	var fillValue = "";
 	while (this.length + fillValue.length < length_of_string) {
@@ -114,12 +114,12 @@ String.prototype.rjust = function(length_of_string, chars_to_fill) {
  * If integer is greater than the length of str, returns a new String of length integer with str left justified and padded with padstr; otherwise, returns str.
  * @param length_of_string final length of resulting string
  * @param chars_to_fill (optional) character(s) to use for padding (' ' is default)
- * @example 
+ * @example
  * "hello".ljust(4)            #=> "hello"
  * "hello".ljust(20)           #=> "hello               "
  * "hello".ljust(20, '1234')   #=> "hello123412341234123"
  */
-String.prototype.ljust = function(length_of_string, chars_to_fill) { 
+String.prototype.ljust = function(length_of_string, chars_to_fill) {
 	if (length_of_string < this.length) return this.toString();
 	var fillValue = "";
 	while (this.length + fillValue.length < length_of_string) {
@@ -139,12 +139,12 @@ String.prototype.ljust = function(length_of_string, chars_to_fill) {
  * @param length_of_string final length of resulting string
  * @param chars_to_fill (optional) character(s) to use for padding (' ' is default)
  * @example
- * .center 
+ * .center
  * "hello".center(4) #=> "hello"
  * "hello".center(20) #=> " hello "
  * "hello".center(20, '123') #=> "1231231hello12312312"
  */
-String.prototype.center = function(length_of_string, chars_to_fill) { 
+String.prototype.center = function(length_of_string, chars_to_fill) {
 	if (length_of_string < this.length) return this.toString();
 	if ((length_of_string - this.length) % 2 == 1) {
 		return this.rjust(this.length + ((length_of_string - this.length - 1) / 2), chars_to_fill)
@@ -170,7 +170,7 @@ String.prototype.center = function(length_of_string, chars_to_fill) {
  * "hello \n there".chomp #=> "hello \n there"
  * "hello".chomp("llo") #=> "he"
  */
-String.prototype.chomp = function(delim) { 
+String.prototype.chomp = function(delim) {
 	if(!delim){
 		delim = '\r';
 	}
@@ -179,28 +179,14 @@ String.prototype.chomp = function(delim) {
 };
 
 /**
- * Each other_str parameter defines a set of characters to count. The intersection of these sets defines the characters to count in str. Any other_str that starts with a caret (^) is negated. The sequence c1–c2 means all characters between c1 and c2.
- * @example 
- * a = "hello world"
- * a.count "lo"            #=> 5
- * a.count "lo", "o"       #=> 2
- * a.count "hello", "^l"   #=> 4
- * a.count "ej-m"          #=> 4
- */
-String.prototype.count = function() { 
-	// TODO: finish testing this one
-	return 5;
-};
-
-/**
  * Returns the index of the first occurrence of the given substring or pattern (regexp) in str. Returns nil if not found. If the second parameter is present, it specifies the position in the string to begin the search.
  * @param match_string string to locate
- * @example 
+ * @example
  * "hello".index('e')             #=> 1
  * "hello".index('lo')            #=> 3
  * "hello".index('a')             #=> nil
  */
-String.prototype.index = function(match_string) { 
+String.prototype.index = function(match_string) {
 	var returnValue = this.indexOf(match_string);
 	if(returnValue == -1)returnValue = null;
 	return returnValue;
@@ -209,11 +195,16 @@ String.prototype.index = function(match_string) {
 /**
  * Returns the index of the last occurrence of the given substring or pattern (regexp) in str. Returns nil if not found. If the second parameter is present, it specifies the position in the string to end the search—characters beyond this point will not be considered.
  * @param match_string string to locate
- * @example 
+ * @example
  * "hello".rindex('e')             #=> 1
  * "hello".rindex('l')             #=> 3
  * "hello".rindex('a')             #=> null
  */
+String.prototype.rindex = function(match_string) {
+	var returnValue = this.lastIndexOf(match_string);
+	if(returnValue == -1)returnValue = null;
+	return returnValue;
+};
 
 /**
  * Inserts other_str before the character at the given index, modifying str. Negative indices count from the end of the string, and insert after the given character. The intent is insert aString so that it starts at the given index.
@@ -223,3 +214,12 @@ String.prototype.index = function(match_string) {
  * "abcd".insert(-3, 'X')   #=> "abXcd"
  * "abcd".insert(-1, 'X')   #=> "abcdX"
  */
+String.prototype.insert = function(position, chars_to_insert) {
+	if (position < 0) {
+		position = this.length + position + 1;
+	}
+  var first_part = this.substring(0, position);
+  var last_part = this.substring(position);
+  return first_part + chars_to_insert + last_part;
+};
+
