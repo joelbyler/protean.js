@@ -15,9 +15,21 @@ describe('Integer Extension', function() {
   });
 
   it('Can do thing n times', function() {
-    var test_var = '';
-    (5.0).times( function() {test_var=test_var+'a';} );
-    test_var.should.equal('aaaaa');
+    var r = '';
+    (3).times( function() {r=r+'a';} );
+    r.should.equal('aaa');
+  });
+  it('Knows what its absolute value is', function() {
+    (12).abs().should.equal(12);
+    (-6).abs().should.equal(6);
+  });
+  it('Knows how to truncate a number', function() {
+    (12.5).floor().should.equal(12);
+    (-6.2).floor().should.equal(-7);
+  });
+  it('Knows how to find the ceiling of anumber', function() {
+    (12.5).ceil().should.equal(13);
+    (-6.2).ceil().should.equal(-6);
   });
 });
 
