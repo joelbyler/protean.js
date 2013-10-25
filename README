@@ -1,9 +1,1 @@
 The goal in this project is to create a JavaScript library will add some of the usefull helper methods that Ruby has available to it to JavasScript types like String, Number, Date, etc.
-
-Uses mocha for testing use the following command to execute tests
-
-
-OR 
-./node_modules/mocha/bin/mocha -R list
-OR
-./node_modules/mocha/bin/mocha -R landing

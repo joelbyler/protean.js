@@ -1,13 +1,31 @@
 {
   "name": "protean.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": "0.6.6"
   },
   "scripts": {"test": "./node_modules/mocha/bin/mocha"},
   "dependencies":{
+  },
+  "readmeFilename": "README",
+  "gitHead": "eea2951abbcce3a658260b40bfbe35c273aa279e",
+  "description": "The goal in this project is to create a JavaScript library will add some of the usefull helper methods that Ruby has available to it to JavasScript types like String, Number, Date, etc. WARNING: this project will modify the prototypes of many objects including String, Number, etc.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
     "mocha": "latest",
     "should": "latest",
     "sinon": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joelbyler/protean.js.git"
+  },
+  "author": "Joel Byler",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/joelbyler/protean.js/issues"
   }
 }

@@ -1,5 +1,5 @@
-var should = require('should');
-var String = require(__dirname + '/../src/protean_string');
+require('should');
+require(__dirname + '/../index');
 
 describe('String Extension', function() {
   it('should be able to trim a value of \'   text with extra spaces   \'', function() {
