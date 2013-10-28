@@ -63,7 +63,7 @@ describe('String Extension', function() {
   it('should be able to find strings within strings', function() {
     'hello'.index('ll').should.equal(2);
     'hello'.index('lo').should.equal(3);
-    'hello'.index('a')+''.should.equal('');
+    ('hello'.index('a')+'').should.equal('null');
   });
   it('should find the location of a character in a string from the right side', function() {
     'hello'.rindex('e').should.equal(1);

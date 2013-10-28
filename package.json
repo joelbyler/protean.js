@@ -4,9 +4,10 @@
   "engines": {
     "node": "0.6.6"
   },
-  "scripts": {"test": "./node_modules/mocha/bin/mocha"},
-  "dependencies":{
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
   },
+  "dependencies": {},
   "readmeFilename": "README",
   "gitHead": "eea2951abbcce3a658260b40bfbe35c273aa279e",
   "description": "The goal in this project is to create a JavaScript library will add some of the usefull helper methods that Ruby has available to it to JavasScript types like String, Number, Date, etc. WARNING: this project will modify the prototypes of many objects including String, Number, etc.",
@@ -16,8 +17,12 @@
   },
   "devDependencies": {
     "mocha": "latest",
+    "grunt-contrib-jshint": "latest",
     "should": "latest",
-    "sinon": "latest"
+    "sinon": "latest",
+    "grunt": "~0.4.1",
+    "grunt-mocha-test": "latest",
+    "grunt-contrib-watch": "latest"
   },
   "repository": {
     "type": "git",
