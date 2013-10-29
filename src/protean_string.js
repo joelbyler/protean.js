@@ -223,3 +223,14 @@ String.prototype.insert = function(position, chars_to_insert) {
   return first_part + chars_to_insert + last_part;
 };
 
+String.prototype.includes = function(chars) {
+	return this.indexOf(chars) >= 0;
+};
+
+String.prototype.prepend = function(chars) {
+	return chars + this;
+};
+
+String.prototype.chars = function() {
+	return this.split('');
+};

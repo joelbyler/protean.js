@@ -79,4 +79,19 @@ describe('String Extension', function() {
     "abcd".insert(-3, 'X').should.equal("abXcd");
     "abcd".insert(-1, 'X').should.equal("abcdX");
   });
+  it('can tell when a string is included in another string', function() {
+    "abcd".includes('c').should.equal(true);
+    "abcd".includes('e').should.equal(false);
+  });
+  it('can prepend a string to another string', function() {
+    'world'.prepend('hello ').should.equal('hello world');
+  });
+  it('can be a character array', function() {
+    AssertionError: expected 
+    var expected = ['H','e','l','l','o',' ','W','o','r','l','d','!'];
+    var result = "Hello World!".chars();
+    result.length.should.equal(expected.length);
+    result.join().should.equal(expected.join());
+
+  });
 });
