@@ -7,7 +7,7 @@ deploy:
   provider: npm
   email: joelbyler@gmail.com
   api_key:
-    secure: cQCbJbb/YN3tH0K5ih20cbqkL+pbI1hPisFKV4vqTPeY2p8tO+OFqL8o+1VsrAc0AmLOQwEoGEYHl/c5/De3sA4hdU7dnlq2yKVbcmX8Gwkm5P324PH/q3UX1Fy11LmJxS+0m3fyaKctICLfxkRb58zjCy2GoKxA1F+tdUXcl1o=
+    secure: HWs0y9ZRzT4w2EExS1R0iJBZP/Vn/PzjagNw106/w/xjxqVL61TF0+HrCuMdyXWd4SKB+IDSecufY3fSWvpMVNWMaBw9YNKiwqwuP7k9Swgorcyw6UeoI6sro889KhMTE6RCj0rcTWyf4ulKt5q8plpbz/B/7OXSkmSh4HuA16w=
   on:
     tags: true
     repo: joelbyler/protean.js
