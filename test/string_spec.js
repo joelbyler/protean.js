@@ -1,5 +1,5 @@
 require('should');
-require(__dirname + '/../index');
+require(__dirname + '/../lib/index');
 
 describe('String Extension', function() {
   it('should be able to trim a value of \'   text with extra spaces   \'', function() {
@@ -87,7 +87,6 @@ describe('String Extension', function() {
     'world'.prepend('hello ').should.equal('hello world');
   });
   it('can be a character array', function() {
-    AssertionError: expected 
     var expected = ['H','e','l','l','o',' ','W','o','r','l','d','!'];
     var result = "Hello World!".chars();
     result.length.should.equal(expected.length);

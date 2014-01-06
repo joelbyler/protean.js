@@ -1,5 +1,5 @@
 require('should');
-require(__dirname + '/../index');
+require(__dirname + '/../lib/index');
 
 describe('Integer Extension', function() {
   it('Knows what\'s next', function() {
